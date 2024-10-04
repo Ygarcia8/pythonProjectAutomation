@@ -8,7 +8,7 @@ def setup():
     yield driver
     driver.quit()
 def test_valid_login(setup):
-    setup.get("https://demo.guru99.com/Agile_Project/Agi_V1/")
+    setup.get("TEST_SITE_URL")
     setup.find_element(By.NAME, 'uid').send_keys("1303")
     setup.find_element(By.NAME, 'password').send_keys("Guru99")
     setup.find_element(By.NAME, 'btnLogin').click()
@@ -18,12 +18,31 @@ def test_valid_login(setup):
 @pytest.fixture(scope="class")
 def setup(request):
     driver = webdriver.Chrome()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     driver.get("https://demo.guru99.com/payment-gateway/index.php")
     request.cls.driver = driver
     yield
     driver.quit()
 
-# Fixture for telecom
+# Fixture for
 @pytest.fixture(scope="class")
 def setup(request):
     driver = webdriver.Chrome()
