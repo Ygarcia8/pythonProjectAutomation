@@ -1,6 +1,10 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from constants import PAYMENT_GATEWAY_URL, BANK_PROJECT_URL
+
+
+
 
 @pytest.fixture
 def setup():
@@ -18,49 +22,16 @@ def test_valid_login(setup):
 @pytest.fixture(scope="class")
 def setup(request):
     driver = webdriver.Chrome()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    driver.get("https://demo.guru99.com/payment-gateway/index.php")
+    driver.get(PAYMENT_GATEWAY_URL)
     request.cls.driver = driver
     yield
     driver.quit()
 
-# Fixture for
+# Fixture for Bankproject
 @pytest.fixture(scope="class")
 def setup(request):
     driver = webdriver.Chrome()
-    driver.get("https://demo.guru99.com/telecom/index.html")
+    driver.get(BANK_PROJECT_URL)
     request.cls.driver = driver
-    yield
-    driver.quit()
-
-@pytest.fixture(scope="class")
-def setup(request):
-    # Setup WebDriver (Chrome)
-    driver = webdriver.Chrome()
-    driver.maximize_window()
-    driver.get("https://demo.guru99.com/V1/index.php")
-
-    # Pass driver to the class where tests are being run
-    request.cls.driver = driver
-
-    # Teardown
     yield
     driver.quit()
